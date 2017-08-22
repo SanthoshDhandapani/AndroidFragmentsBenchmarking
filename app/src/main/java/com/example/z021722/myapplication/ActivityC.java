@@ -20,7 +20,6 @@ public class ActivityC extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Presenter.loadByFragment(this);
         MyApplication myApplication = (MyApplication) getApplication();
         if(myApplication.loadViewsByFragment) {
             Presenter.loadByFragment(this);
