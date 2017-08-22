@@ -1,9 +1,12 @@
 package com.example.z021722.myapplication;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -12,8 +15,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         MyApplication myApplication = (MyApplication) getApplication();
-        if(myApplication.loadFragmentsList) {
-            loadListOfFragments();
+        if(myApplication.loadAsFragments) {
+            Presenter.navigateToFragment =true;
+            Presenter.loadByFragment(this);
         } else if(myApplication.loadViewsByFragment) {
             Presenter.loadByFragment(this);
         } else {
@@ -48,9 +52,13 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
     }
 
-    private void loadListOfFragments() {
-        for (int index=0;index<4;index++) {
-            Presenter.loadByFragment(this);
+    @Override
+    public void onBackPressed() {
+        List<Fragment> fragmentList = getSupportFragmentManager().getFragments();
+        if(fragmentList!=null && fragmentList.size()>1) {
+            getSupportFragmentManager().beginTransaction().remove(fragmentList.get(fragmentList.size()-1)).commit();
+        } else {
+            super.onBackPressed();
         }
     }
 }

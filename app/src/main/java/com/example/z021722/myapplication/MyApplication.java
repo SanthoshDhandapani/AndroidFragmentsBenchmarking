@@ -8,8 +8,8 @@ import android.app.Application;
 
 public class MyApplication extends Application {
 
-    public boolean loadFragmentsList = false;
-    public boolean loadViewsByFragment = true;
+    public boolean loadAsFragments = false;
+    public boolean loadViewsByFragment = false;
 
     @Override
     public void onCreate() {

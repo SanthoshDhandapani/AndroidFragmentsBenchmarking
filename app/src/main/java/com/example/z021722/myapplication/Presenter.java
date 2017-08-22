@@ -1,6 +1,7 @@
 package com.example.z021722.myapplication;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -18,11 +19,13 @@ import android.widget.TextView;
 
 public class Presenter {
 
+    static boolean navigateToFragment;
+
     public static void loadViews(View rootView, final AppCompatActivity appCompatActivity) {
-        Toolbar toolbar = (Toolbar)appCompatActivity.findViewById(R.id.toolbar);
+        Toolbar toolbar = appCompatActivity.findViewById(R.id.toolbar);
         appCompatActivity.setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton)appCompatActivity.findViewById(R.id.fab);
+        FloatingActionButton fab = appCompatActivity.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -34,9 +37,11 @@ public class Presenter {
         ScrollView scrollView= new ScrollView(appCompatActivity);
         LinearLayout mainLayout = new LinearLayout(appCompatActivity);
         mainLayout.setOrientation(LinearLayout.VERTICAL);
+        String screenName = !navigateToFragment?appCompatActivity.getClass().getSimpleName()
+                                                :"Fragment "+appCompatActivity.getSupportFragmentManager().getFragments().size();
         TextView titleView =new TextView(appCompatActivity);
         titleView.setPadding(0,0,0,15);
-        titleView.setText(appCompatActivity.getClass().getSimpleName());
+        titleView.setText(screenName);
         mainLayout.addView(titleView);
         for (int i=0; i<10; i++){
             LinearLayout ll = new LinearLayout(appCompatActivity);
@@ -51,15 +56,20 @@ public class Presenter {
             ll.addView(b);
             mainLayout.addView(ll);
         }
-        scrollView.addView(mainLayout);
-        ViewGroup container = (ViewGroup)((rootView==null)?appCompatActivity.findViewById(R.id.container):rootView);
-        container.setOnClickListener(new View.OnClickListener() {
+        mainLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(appCompatActivity, getDestinationActivity(appCompatActivity).getClass());
-                appCompatActivity.startActivity(intent);
+                if(!navigateToFragment) {
+                    Intent intent = new Intent(appCompatActivity, getDestinationActivity(appCompatActivity).getClass());
+                    appCompatActivity.startActivity(intent);
+                } else {
+                    loadByFragment(appCompatActivity);
+                }
             }
         });
+        scrollView.addView(mainLayout);
+
+        ViewGroup container = (ViewGroup)((rootView==null)?appCompatActivity.findViewById(R.id.container):rootView);
         container.addView(scrollView);
     }
 
