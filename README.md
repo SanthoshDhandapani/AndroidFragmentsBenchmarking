@@ -1,7 +1,7 @@
 # Benchmarking Android Fragments
 
-<h4>Activities :</h4> Activity A, Activity B, Activity C, Activity D
-<h4>Results:</h4> Based on the navigation from  ActivityA to ActivityD
+<h4>Activities :</h4> MainActivity, Activity B, Activity C, Activity D
+<h4>Results:</h4><p>Based on the navigations<br/>1) From MainActivity to ActivityD <br/>2) For Fragments : Fragment 1 to Fragment 4</p> 
 
 <h1>This project aims just to test the memory usage of a basic android application with the following cases (using android studio's memory profiler).</h1>
 
