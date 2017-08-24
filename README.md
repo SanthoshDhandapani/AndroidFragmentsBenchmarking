@@ -3,9 +3,9 @@
 <h4>Activities :</h4> MainActivity, Activity B, Activity C, Activity D
 <h4>Results:</h4><p>Based on the navigations<br/>1) From MainActivity to ActivityD <br/>2) For Fragments : Fragment 1 to Fragment 4</p> 
 
-<h1>This project aims just to test the memory usage of a basic android application with the following cases (using android studio's memory profiler).</h1>
+<h2>This project aims just to test the memory usage of a basic android application with the following cases (using android studio's memory profiler).</h2>
 
-<h2>When views are directly used in multiple Activity classes.</h2>
+<h2>1) When views are directly used in multiple Activity classes.</h2>
 <pre>Class Name : MyApplication</pre>
 <code>
  public boolean loadAsFragments = false;
@@ -25,7 +25,7 @@ Diff : 2.92 MB
 <h3>Average Memory Consumption: 2.87 MB<h3>
 <hr/>
 
-<h2>When views are used in a fragment and then it is implemented in Activity.</h2>
+<h2>2) When views are used in a fragment and then it is implemented in an Activity.</h2>
 <pre>Class Name : MyApplication</pre>
 <code>
  public boolean loadAsFragments = false;
@@ -44,7 +44,7 @@ End : 24.44 MB
 Diff : 2.68 MB
 <h3>Average Memory Consumption: 2.77 MB</h3>
 <hr/>
-<h3>Single Activity and multiple Fragments.</h3>
+<h3>3) Single Activity and multiple Fragments.</h3>
 <pre>Class Name : MyApplication</pre>
 <code>
  public boolean loadAsFragments = true;
@@ -68,5 +68,17 @@ Diff : 1.58 MB
 <img src="https://user-images.githubusercontent.com/10140204/29455384-9bd4fb48-842e-11e7-9757-4b25b1f18522.jpg" alt="Single Activity and muliple Fragments"/>
 -->
 <hr/>
-<h3>App ScreenShot</h3>
-<img src="https://user-images.githubusercontent.com/10140204/29455934-de7d80a8-8430-11e7-8cab-c87ffa3b0ec6.jpeg" alt="App ScreenShot" height="960px" width="540px" style="height: 960px;width: 540px"/>
+<div>
+<h3>App ScreenShots</h3>
+<div style="width: 50%; float:left">
+<h3>Navigation From MainActivity to ActivityD</h3>
+   <img src="https://user-images.githubusercontent.com/10140204/29663775-77af4aa0-88ea-11e7-9fb6-760a69233dc6.gif" alt="App ScreenShot" />
+</div>
+
+<div style="width: 50%; float:right">
+<h3>Navigation From MainActivity (Fragment1 to Fragment4)</h3>
+  <img src="https://user-images.githubusercontent.com/10140204/29663776-77b3c364-88ea-11e7-8803-7f3658428a74.gif" alt="App ScreenShot" />
+</div>
+</div>
+<!-- h3>App ScreenShots</h3>
+<img src="https://user-images.githubusercontent.com/10140204/29663776-77b3c364-88ea-11e7-8803-7f3658428a74.gif" alt="App ScreenShot" height="960px" width="540px" style="height: 960px;width: 540px"/> -->
